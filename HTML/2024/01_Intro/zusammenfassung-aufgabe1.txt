@@ -1,0 +1,7 @@
+Website building services like WordPress and Squarespace make it easy to create a site without coding knowledge. Web design involves various roles, including content wrangling, design, and development, each with specific responsibilities. User experience (UX) design focuses on the overall user experience, while interaction design and user interface (UI) design concentrate on the site’s functionality and visual organization.
+
+Web design involves various roles, including user experience (UX) design, visual design, and frontend development. UX designers create wireframes, site diagrams, and storyboards to ensure usability and user flow. Visual designers create the visual identity of the site, including logos, graphics, type, colors, and layout. Frontend developers implement HTML, CSS, and JavaScript to create the functional and interactive elements of the site.
+
+Web development involves various roles, including frontend developers who focus on HTML, CSS, and JavaScript, and backend developers who manage server-side applications and databases. Full-stack developers are proficient in both frontend and backend technologies, while unicorns can handle all aspects of web design. Other roles, such as product managers, project managers, and SEO specialists, contribute to the overall success of a website.
+
+SEO specialists optimize websites for search engine rankings, while multimedia producers create engaging content. Web development teams often have diverse skill sets, with roles blurring as the site grows.
