@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Arbeitsjournal</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+  }
+  header {
+    position: sticky;
+    top: 0;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    
+    z-index: 1000;
+  }
+  header span {
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    
+  }
+  header span:hover {
+    
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  .wochenruckblick, .lupe-der-woche, .reflexion {
+    margin-top: 20px;
+    padding: 20px;
+    
+    border-radius: 5px;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
+</head>
+<body>
+<header>
+    <span onclick="scrollToSection('wochenruckblick')">Wochenrückblick</span>
+    <span onclick="scrollToSection('lupe-der-woche')">Lupe der Woche</span>
+    <span onclick="scrollToSection('reflexion')">Reflexion</span>
+</header>
+
+<h1>Auflistung der Tätigkeiten und der Zeit</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tag</th>
+      <th>Tätigkeiten</th>
+      <th>Zeit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="5"><b>Montag</b><br>17.08.2020</td>
+      <td>Wir haben eine intensive Vorstellungsrunde gemacht mit Selbstportraits erstellen und gemeinsam Berufsbilder suchen.</td>
+      <td>4h15min</td>
+    </tr>
+    <tr>
+      <td>Zusammen mit Robin haben wir WLAN + Office eingerichtet. Ausserdem haben wir den WebMail Zugang vorbereitet, um direkt starten zu können.</td>
+      <td>1h</td>
+    </tr>
+    <tr>
+      <td>Bei Bobby haben wir unsere gegenwärtige Situation und die Gewünschte (in einem Jahr), anhand von Eigenschaften eines Tieres beschrieben.</td>
+      <td>1h30min</td>
+    </tr>
+    <tr>
+      <td>Unter Nadines Anleitung haben wir das Spiel LifeStyle gespielt, um uns gegenseitig besser kennenzulernen.</td>
+      <td>30min</td>
+    </tr>
+    <tr>
+      <td>Wir haben einen Rundgang durch das Gebäude gemacht.</td>
+      <td>1h</td>
+    </tr>
+    <tr>
+      <td rowspan="5"><b>Dienstag</b><br>18.08.2020</td>
+      <td>Unter Anleitung der BB haben wir unseren Arbeitsplatz definitiv eingerichtet.</td>
+      <td>1h</td>
+    </tr>
+    <tr>
+      <td>In kleinen Gruppen organisierten wir einen Postenlauf mit vorgegebenen Zielen und erkundeten Zürich und Umgebung.</td>
+      <td>3h45min</td>
+    </tr>
+    <tr>
+      <td>Zum Postenlauf erstellten wir eine Präsentation.</td>
+      <td>1h</td>
+    </tr>
+    <tr>
+      <td>Die vorbereiteten Präsentationen wurden von den insgesamt sechs Gruppen gehalten.</td>
+      <td>1h</td>
+    </tr>
+    <tr>
+      <td>Mit Bobby haben wir die Themen Erwartungen und Verhalten bearbeitet, ausserdem haben wir ein Kahoot mit den Bildern und Namen der Auszubildenden gemacht.</td>
+      <td>1h15min</td>
+    </tr>
+    <tr>
+      <td rowspan="6"><b>Mittwoch</b><br>19.08.2020</td>
+      <td>Wir haben die Cloud mit unserem Laptop/Notebook synchronisiert.</td>
+      <td>15min</td>
+    </tr>
+    <tr>
+      <td>Man gab uns fürs arbeiten am Arbetsjournal</td>
+      <td>1h40min</td>
+    </tr>
+    <tr>
+      <td>Wir haben den Leitfaden mit Gruppenarbeiten und Flipchart-Präsentationen vertieft.</td>
+      <td>2h45min</td>
+    </tr>
+    <tr>
+      <td>Die oberen Lehrjahre und deren Berufsbilder wurden uns vorgestellt.</td>
+      <td>40min</td>
+    </tr>
+    <tr>
+      <td>Bobby hat uns ins Office eingeführt und wir arbeiten selbstständig an der Office-Einführung.</td>
+      <td>2h40min</td>
+    </tr>
+    <tr>
+      <td>Wir schauen mit Bobby den Code of Conduct genauer an und behandeln ihn intensiv.</td>
+      <td>30min</td>
+    </tr>
+    <tr>
+      <td rowspan="5"><b>Donnerstag</b><br>20.08.2020</td>
+      <td>Wir haben das Nutzungsreglement selbstständig durchgelesen, offene Fragen geklärt und unterschrieben.</td>
+      <td>20min</td>
+    </tr>
+    <tr>
+      <td>Robin hat uns ins binäre Zahlensystem eingeführt.</td>
+      <td>30min</td>
+    </tr>
+    <tr>
+      <td>Wir haben das Tangram-Spiel gespielt unter der Anleitung von Laura gespielt.</td>
+      <td>1h20min</td>
+    </tr>
+    <tr>
+      <td>Man hat uns wieder Zeit gegeben, um an der Office Einführung zu arbeiten.</td>
+      <td>5h</td>
+    </tr>
+    <tr>
+      <td>Wir haben ein weiteres Kennenlernspiel gespielt.</td>
+      <td>50min</td>
+    </tr>
+  </tbody>
+</table>
+
+<div id="wochenruckblick" class="wochenruckblick">
+    <h2>Wochenrückblick</h2>
+    
+    <p>In dieser ersten Arbeitswoche haben wir mit vielen spielerischen Aktivitäten die Namen der anderen Auszubildenden gelernt. Zum Beispiel mit dem Spiel LifeStyle, welches wir unter der Anleitung von Nadine und Bobby gespielt haben. Bei Bobby haben wir mit Tierfiguren unsere derzeitige Gefühlslage beschrieben und in einem zweiten Durchlauf die gewünschte Situation anhand von einer zweiten Tierfigur. Anschuss an die Assoziation mit den Tieren, durften wir von ausgewählten Mitlernendem positive Eigenschaften aufschreiben und diese dann vorlesen. Ausserdem konnten wir jugendliche mit ähnlichen Hobbys in unserem Leben suchen - anhand eines selbst geschriebenen Steckbriefes - damit wir schneller neue Leute kennenlernen.</p>
+  
+    <p>Auch wurden wir unter Anleitung von Robin damit betraut, unsere Notebooks/Laptops einzurichten. Dazu gehörte das Einrichten einer WLAN Verbindung, des WebMail Kontos sowie die Microsoft Applikation «Teams», welche uns eine Arbeitsplattform vereinfachen, und zudem die schnelle und zuverlässige Kommunikation, sowie Auftragerteilung, gewährleisten soll. Das Anschliessen des Laptops an einen Bildschirm gehörte ebenfalls zu unserer Tätigkeit.</p>
+  
+    <p>Ein bisschen Bewegung und Ortskenntnisse gehören dazu, weshalb von den Berufsbildnern ein Postenlauf organisiert wurde, den wir in kleinen Gruppen absolvieren sollten. Die Route konnten wir im Team planen, die zu besuchenden Posten wurden uns dabei vorgegeben.</p>
+  
+    <p>Nach dem abschlussreichen Postenlauf wurden wir damit beauftragt eine Präsentation vorzubereiten, in welcher wir die wichtigsten Erkenntnisse festhalten sollten. Nach eben jener genannten Präsentation spielten wir eine Runde Kahoot, um die Namen der anderen Auszubildenden in Erinnerung zu behalten.</p>
+  
+    <p>Im Anschluss hatten wir einen Block, in welchem es vor allem um die Erwartungen der Lernenden und des Ausbildungsbetriebes ging. Wir diskutierten diverse weitere Themen, wie eine erfolgreiche Zusammenarbeit gewährleisten zu können.</p>
+  
+    <p>Am gestrigen Tag fand ebenfalls, neben der selbstständigen Arbeit mit unseren Notebooks, eine mehreren Gruppen Flipchart Präsentation vorbereitete, um die wichtigsten Aspekte des Leitfadens besser verstehen zu können und offene Fragen zu klären.</p>
+  
+    <p>Bobby hat uns auch die Auszubildenden der oberen Lehrjahre vorgestellt, sowie deren Berufsbilder. Auch mit ihm haben wir den Verhaltenskodex der Noser Group gelesen und offene Fragen geklärt.</p>
+  
+    <p>Bobby hat uns mit einer selbstständigen Einführung ins Office beauftragt und wir haben mit der Bearbeitung des Einführung ins Office Programm «Word» begonnen.</p>
+  
+    <p>Wir haben als ein Behauptungsspiel gespielt, bei welchem 2 richtige und eine falsche Behauptung aufgeschrieben wurden, dies hat uns wieder neue Informationen zu unseren Mitlernendem gegeben und hat zu vielen Lachern geführt. Ausserdem hat Robin uns eine Einführung ins binäre Zahlensystem gegeben und es konnten einige kurze Aufgaben dazu lösen. Ausserdem haben wir selbstständig das Nutzungsreglement gelesen, die offenen Fragen geklärt und es dann unterschrieben, damit die KV die Unterlagen einsammeln kann.</p>
+  
+    <p>Um herauszufinden wie wichtig Kommunikation effektiv ist, haben wir 2 Zweiergruppen Tangram gespielt, dies sollte eine Vorbereitung auf die Arbeit mit Kunden sein, da es viele Fehler oder Missverständnisse geben kann.</p>
+</div>
+
+<div id="lupe-der-woche" class="lupe-der-woche">
+    <h2>Lupe der Woche – IPERKA-Methode</h2>
+    
+    <div style="display: flex; align-items: start;">
+      <div style="flex: 1; padding-right: 20px;">
+        <p>Die IPERKA-Methode, eine Methodik zur systematischen Bearbeitung von Aufträgen. Die IPERKA-Methode umfasst sechs Arbeitsschritte, welche vom Sammeln von Informationen bis hin zur Ausführung, Kontrolle und Auswertung alle Schritte beinhaltet.</p>
+        <p>Im folgenden Text wird die IPERKA-Methodik näher erläutert und es wird auf jeden der sechs Schritte näher eingegangen.</p>
+      </div>
+      <div>
+        <img src="https://konstrukteur-in.ch/wp-content/uploads/iperka-1.jpg" alt="IPERKA-Methode Diagramm" width="300" height="200">
+      </div>
+    </div>
+    <ol>
+      <li><strong>Informieren:</strong> In diesem Schritt geht es darum, den Auftrag genau zu verstehen, und das definierte Ziel zu erkennen. Danach ist das Sammeln von Informationen im Fokus. Bei der Informationsbeschaffung müssen die verschiedenen W-Fragen beantwortet oder geklärt werden, bevor man zum nächsten Schritt gehen kann; der Planung.</li>
+      <li><strong>Planen:</strong> Bei der Planung geht es um das Ausarbeiten von verschiedenen Lösungsvarianten und das Vorgehen bei jeder variablen Lösung. Zu der Planung gehören auch Teile wie das schätzen des Zeitbedarfs und das Ermitteln von Werkzeugen und Hilfsmitteln, welche die Realisierung vereinfachen.</li>
+      <li><strong>Entscheiden:</strong> Bei der Entscheidung wird eine der vorher bei der Planung erarbeiteten Lösungsvarianten gewählt. Dies entscheidet bei einem Teamauftrag die ganze Gruppe und sollte, wenn möglich einstimmig erfolgen. Die geplante Vorgehensweise wird am Arbeitsplatz sichtbar gemacht und die einzelnen Mitglieder der Gruppe erhalten je eine Kopie, um effizientes Arbeiten zu ermöglichen.</li>
+      <li><strong>Realisieren:</strong> Die Realisierung beansprucht am meisten Zeit. Ohne dringende Probleme oder wichtige Gründe sollte nicht vom Ablauf abgewichen werden, dass das geplante Vorgehen und der Zeitplan sein straff sein kann.</li>
+      <li><strong>Kontrollieren:</strong> Bei der Kontrolle kann es zu Unstimmigkeiten mit dem Arbeitsplan kommen, wenn Fristen nicht eingehalten werden, oder zu wenig Zeit eingeplant wurde. Wenn dies nicht der Fall ist und keine Anpassung am Arbeitsplan vorgenommen muss, sollte jede Arbeit sorgfältig kontrolliert werden, damit im Nachhinein keine Zeit mehr für unnötige Korrekturen aufgewendet werden muss.</li>
+      <li><strong>Auswerten:</strong> Nach dem Abschluss der Arbeit und allfälligen Kontrollen wird das Endresultat, sowie das Vorgehen analysiert. Hier reflektiert man, was gut und was weniger gut verlaufen ist und ob es für die nächste Arbeit gibt. Ausserdem schaut man auf die eigen geleistete Arbeit zurück und hält fest, welche Tätigkeiten selbstständig und richtig ausgeführt werden konnten und was man selbst noch verbessern muss.</li>
+    </ol>
+  </div>
+  
+  <div id="reflexion" class="reflexion">
+    <h2>Reflexion</h2>
+    <p>In dieser ersten Arbeitswoche durfte ich viele neue, großartige Leute kennenlernen und konnte bereits einen kleinen Personenkreis herausfiltern, mit dem ich den Hauptteil meiner Ausbildung gerne verbringen möchte. Ebenfalls vorstellen kann mich mir, dass mit der einen oder anderen Person auch privat Kontakt aufgebaut wird. </p>
+    <p>Im späteren Verlauf der Ausbildung und auch im Privatleben werde ich diese neuen Erkenntnisse (Office) sicher anwenden können und mir dadurch die Arbeit erleichtern. Bei weiteren Bewerbungen oder schriftlichen Arbeiten wird mir das neu erlangte Wissen eine professionellere Arbeitsweise ermöglichen.</p>
+    <p>Beim Arbeiten im Word, speziell mit den Formatvorlagen ist definitiv noch Verbesserungspotential da. Durch wiederholtes Arbeiten mit dieser Funktion sollte es mir jedoch möglich sein, auch mit diesem Tool effizient arbeiten zu können.</p>
+  </div>
+  
+  <script>
+  function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+  </script>
+  </body>
+  </html>

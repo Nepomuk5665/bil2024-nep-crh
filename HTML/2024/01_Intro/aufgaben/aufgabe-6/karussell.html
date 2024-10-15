@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karussell Implementierung</title>
+    <style>
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .carousel-slide {
+            display: none;
+        }
+        .carousel-slide img {
+            width: 100%;
+            height: auto;
+        }
+        .carousel-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            text-align: center;
+            z-index: 2;
+        }
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .carousel-nav button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .carousel-indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+        }
+        .indicator.active {
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel-container">
+        <div class="carousel-text">Karussell</div>
+        <div class="carousel-slide">
+            <img src="https://imgcdn.stablediffusionweb.com/2024/4/18/75a9d4d4-4acf-4004-93c9-33f9c708ceb6.jpg" alt="Bild 1">
+        </div>
+        <div class="carousel-slide">
+            <img src="https://cdn.openart.ai/published/tJjCx6BvDq8hsZUpuU8l/05tzQQOx_jf9c_1024.webp" alt="Bild 2">
+        </div>
+        <div class="carousel-slide">
+            <img src="https://aircraftbuilderseurope.com/wp-content/uploads/2022/06/SlingTsi-1024x1024.jpg" alt="Bild 3">
+        </div>
+        <div class="carousel-nav">
+            <button onclick="changeSlide(-1)">&#10094;</button>
+            <button onclick="changeSlide(1)">&#10095;</button>
+        </div>
+        <div class="carousel-indicators"></div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicators = document.querySelector('.carousel-indicators');
+
+        function showSlide(n) {
+            slides[currentSlide].style.display = 'none';
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].style.display = 'block';
+            updateIndicators();
+        }
+
+        function changeSlide(n) {
+            showSlide(currentSlide + n);
+        }
+
+        function updateIndicators() {
+            indicators.innerHTML = '';
+            for (let i = 0; i < slides.length; i++) {
+                const indicator = document.createElement('div');
+                indicator.classList.add('indicator');
+                if (i === currentSlide) {
+                    indicator.classList.add('active');
+                }
+                indicator.onclick = () => showSlide(i);
+                indicators.appendChild(indicator);
+            }
+        }
+
+        
+        showSlide(0);
+    </script>
+</body>
+</html>
