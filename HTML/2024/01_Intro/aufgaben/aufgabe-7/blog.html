@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nepomuk Crhonek's Blog</title>
+    <style>
+        /*Farben chema*/
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --text-color: #333;
+            --background-color: #ecf0f1;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        nav {
+            background: var(--secondary-color);
+            color: #fff;
+            padding: 1rem 0;
+        }
+        nav ul {
+            padding: 0;
+            list-style: none;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 1rem;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .name {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+        }
+        /* Easter egg */
+        .easter-egg {
+            color: var(--background-color);
+            font-size: 0.1em;
+        }
+        .easter-egg:hover {
+            color: var(--primary-color);
+            font-size: 1em;
+            transition: all 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section id="home">
+            <h1>Willkommen zu meinem Blog</h1>
+            <p>Hier teile ich meine Gedanken und Ideen</p>
+        </section>
+
+        <section id="about">
+            <h2>Über Mich</h2>
+            <div class="name">Nepomuk Crhonek</div>
+            <p>Hallo! Ich bin Nepomuk Crhonek 17 Jahre alt und programmiere schon seit ich 9 bin.</p>
+        </section>
+        
+        <section id="blog">
+            <h2>Blog Posts</h2>
+            <article>
+                <h3>SwiftUI</h3>
+                <p>In diesem Post wird erklärt was SwiftUI ist und wieso es besser ist als alle anderen programmiersprachen.</p>
+            </article>
+            <article>
+                <h3>Brainrot</h3>
+                <p>Viele Kinder leiden an Brainrot heutzutage wegen den Socialen Medien und Skibidi toilet.</p>
+            </article>
+            <article>
+                <h3>Image recognition</h3>
+                <p>Hier wird man ein bild hochladen können und es wird dann an meine API weitergeleitet (POST request) und bekommt dann ein Bild mit sachen beschrieben zurück.</p>
+            </article>
+        </section>
+
+        <p class="easter-egg">Du hast die versteckte Nachricht gefunden!</p>
+    </main>
+
+    <footer>
+        <div class="container">
+            <h2>Impressum</h2>
+            <p>Nepomuk Crhonek</p>
+            <p>Email: nepomuk.crhonek@accenture.com</p>
+            <p>Address: Bolleystrasse 9, Zürich, 8006, Schweiz</p>
+            <p>Das ist mein Blog über mein Leben.</p>
+        </div>
+    </footer>
+</body>
+</html>
