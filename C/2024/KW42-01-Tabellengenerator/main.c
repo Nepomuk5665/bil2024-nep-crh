@@ -1,10 +1,15 @@
 #include <stdio.h>
 #include <string.h>
 int main(void) {
+    printf("Das Programm wurde für  gemacht\n\n");
+
     int zeilen;
     int spalten;
     int pixel;
-    
+    int wahl;
+
+
+
     printf("Wie viele Spalten?\n");
     scanf("%d", &spalten);
 
@@ -14,6 +19,13 @@ int main(void) {
     printf("Border in pixel: ");
     scanf("%d", &pixel);
 
+    do{
+    printf("\nWillst du einzelne Zellen anpassen? 1 Yes, 2 No \n");
+    scanf("%d", &wahl);
+        if(wahl != 2 && wahl != 1) {
+            printf("falsche eingabe");
+        }
+    }while(wahl != 2 && wahl != 1);
 
     FILE *index;
     index = fopen("../index.html", "w");
