@@ -229,3 +229,4 @@ sketch
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/java,c,react,visualstudiocode,clion
+.DS_Store
