@@ -7,7 +7,8 @@ int main(void) {
     int spalten;
     int pixel;
     int wahl;
-
+    int änderungZeile;
+    int änderungSpalte;
 
 
     printf("Wie viele Spalten?\n");
@@ -26,7 +27,12 @@ int main(void) {
             printf("falsche eingabe");
         }
     }while(wahl != 2 && wahl != 1);
-
+    if(wahl == 1) {
+        printf("In welcher Zeile?\n");
+        scanf("%d", &änderungZeile);
+        printf("Wie viele Spalte?\n");
+        scanf("%d", &änderungSpalte);
+    }
     FILE *index;
     index = fopen("../index.html", "w");
 
@@ -42,6 +48,9 @@ int main(void) {
     fprintf(index, "          table, th, td {\n");
     fprintf(index, "              border: %dpx solid;\n", pixel);
     fprintf(index, "          }\n");
+    fprintf(index, "            #change {\n");
+    fprintf(index, "                /*chnage here*/\n");
+    fprintf(index, "            }\n");
     fprintf(index, "      </style>\n");
     fprintf(index, "    <meta charset=\"utf-8\">\n");
     fprintf(index, "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n");
@@ -52,10 +61,14 @@ int main(void) {
     fprintf(index, "    <h1>einfache Tabelle von C</h1>\n");
     fprintf(index, "    <table>\n");
 
-    if (zeilen != 0) {
+    if (zeilen != 0 && zeilen != 0) {
         fprintf(index, "        <tr>\n");
         for (int i = 0; i < spalten; i++) {
-            fprintf(index, "            <th>Header %d</th>\n", i+1);
+            if (änderungSpalte == i && änderungZeile == 1) {
+                fprintf(index, "            <th>Header %d</th>\n", i+1);
+            }else {
+                fprintf(index, "            <th id=\"change\"Header %d</th>\n", i+1);
+            }
         }
         fprintf(index, "        </tr>\n");
 
@@ -65,6 +78,11 @@ int main(void) {
                 fprintf(index, "            <th>Hello World</th>\n");
             }
             fprintf(index, "        </tr>\n");
+        }
+        printf("\nDkument mit tabelle wurde erstellt");
+    }else {
+        if (index != NULL) {
+            printf("\nHTML dokument ohne Tabelle erstellt");
         }
     }
 
