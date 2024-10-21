@@ -26,11 +26,13 @@ int main(void) {
     fprintf(index, "  </head>\n");
     fprintf(index, "  <body>\n");
     fprintf(index, "    \n");
-    fprintf(index, "    <p>Tabelle.</p>\n");
+    fprintf(index, "    <h1>einfache Tabelle von C</h1>\n");
     fprintf(index, "    <table>\n");
+    fprintf(index, "        <tr>\n");
     for (int i = 0; i < spalten; i++) {
-        fprintf(index, "    <th>Header %d</th>\n", i+1);
+        fprintf(index, "            <th>Header %d</th>\n", i+1);
     }
+    fprintf(index, "        </tr>\n");
     fprintf(index, "    </table>\n");
     fprintf(index, "  </body>\n");
     fprintf(index, "</html>\n");
