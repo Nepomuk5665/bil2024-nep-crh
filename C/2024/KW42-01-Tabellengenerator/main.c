@@ -29,7 +29,7 @@ int main(void) {
     fprintf(index, "    <p>Tabelle.</p>\n");
     fprintf(index, "    <table>\n");
     for (int i = 0; i < spalten; i++) {
-        
+        fprintf(index, "    <th>Header %d</th>\n", i+1);
     }
     fprintf(index, "    </table>\n");
     fprintf(index, "  </body>\n");
