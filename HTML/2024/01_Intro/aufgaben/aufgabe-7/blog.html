@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nepomuk Crhonek's Blog</title>
     <style>
-        /*Farben chema*/
         :root {
             --primary-color: #3498db;
             --secondary-color: #2c3e50;
             --text-color: #333;
             --background-color: #ecf0f1;
         }
-        
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
@@ -48,13 +46,11 @@
             font-weight: bold;
             color: var(--primary-color);
         }
-        /* Responsive design */
         @media (max-width: 768px) {
             .container {
                 width: 95%;
             }
         }
-        /* Easter egg */
         .easter-egg {
             color: var(--background-color);
             font-size: 0.1em;
@@ -64,6 +60,21 @@
             font-size: 1em;
             transition: all 0.5s ease;
         }
+        #image-recognition {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+        #image-upload {
+            margin-bottom: 1rem;
+        }
+        #result {
+            white-space: pre-wrap;
+            background-color: #fff;
+            padding: 1rem;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -72,8 +83,9 @@
             <div class="container">
                 <ul>
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
+                    <li><a href="#about">Über mich</a></li>
                     <li><a href="#blog">Blog</a></li>
+                    <li><a href="#image-recognition">Bilderkennung</a></li>
                 </ul>
             </div>
         </nav>
@@ -88,25 +100,34 @@
         <section id="about">
             <h2>Über Mich</h2>
             <div class="name">Nepomuk Crhonek</div>
-            <p>Hallo! Ich bin Nepomuk Crhonek 17 Jahre alt und programmiere schon seit ich 9 bin.</p>
+            <p>Hallo! Ich bin Nepomuk Crhonek, 17 Jahre alt, und programmiere schon seit ich 9 bin.</p>
         </section>
-        
+
         <section id="blog">
             <h2>Blog Posts</h2>
             <article>
                 <h3>SwiftUI</h3>
-                <p>In diesem Post wird erklärt was SwiftUI ist und wieso es besser ist als alle anderen programmiersprachen.</p>
+                <p>In diesem Post wird erklärt, was SwiftUI ist und warum es besser ist als alle anderen Programmiersprachen.</p>
             </article>
             <article>
                 <h3>Brainrot</h3>
-                <p>Viele Kinder leiden an Brainrot heutzutage wegen den Socialen Medien und Skibidi toilet.</p>
+                <p>Viele Kinder leiden heutzutage an Brainrot aufgrund von sozialen Medien und Skibidi Toilet.</p>
             </article>
             <article>
-                <h3>Image recognition</h3>
-                <p>Hier wird man ein bild hochladen können und es wird dann an meine API weitergeleitet (POST request) und bekommt dann ein Bild mit sachen beschrieben zurück.</p>
+                <h3>Bilderkennung</h3>
+                <p>Hier kannst du ein Bild hochladen, es wird an meine API weitergeleitet (POST Anfrage) und du bekommst ein Bild mit beschriebenen Dingen zurück.</p>
             </article>
         </section>
 
+        <section id="image-recognition">
+            <h2>Bilderkennung</h2>
+            <p>Lade ein Bild hoch und unsere KI beschreibt, was sie sieht.</p>
+            <input type="file" id="image-upload" accept="image/*">
+            <button onclick="recognizeImage()">Bild analysieren</button>
+            <div id="result"></div>
+        </section>
+        <p>Die API request funktioniert mit glitch.com</p>
+        <img src="https://miro.medium.com/v2/resize:fit:606/1*9mhEcbqWgKRMGu47Jeh7mQ.png" alt="Server Strucktur" width="500">
         <p class="easter-egg">Du hast die versteckte Nachricht gefunden!</p>
     </main>
 
@@ -115,9 +136,43 @@
             <h2>Impressum</h2>
             <p>Nepomuk Crhonek</p>
             <p>Email: nepomuk.crhonek@accenture.com</p>
-            <p>Address: Bolleystrasse 9, Zürich, 8006, Schweiz</p>
+            <p>Adresse: Bolleystrasse 9, Zürich, 8006, Schweiz</p>
             <p>Das ist mein Blog über mein Leben.</p>
         </div>
     </footer>
+
+    <script>
+        async function recognizeImage() {
+            const fileInput = document.getElementById('image-upload');
+            const resultDiv = document.getElementById('result');
+            
+            if (!fileInput.files.length) {
+                resultDiv.textContent = 'Wähle zuerst ein Bild aus.';
+                return;
+            }
+            
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append('image', file);
+            
+            try {
+                resultDiv.textContent = 'Analysiere Bild...';
+                const response = await fetch('https://cream-secretive-rat.glitch.me/analyze-image', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Netzwerk Fehler');
+                }
+                
+                const result = await response.json();
+                resultDiv.textContent = result.description;
+            } catch (error) {
+                console.error('Error:', error);
+                resultDiv.textContent = 'Es ist ein Fehler aufgetreten.';
+            }
+        }
+    </script>
 </body>
 </html>
