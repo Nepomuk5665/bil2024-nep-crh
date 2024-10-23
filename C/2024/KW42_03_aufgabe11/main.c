@@ -21,7 +21,7 @@ int main() {
 
     printf("Zahl 1: %d Zahl 2: %d Zahl3: %d", zahl1, zahl2, zahl3);
 
-    // bei mir macht gar nichts einen strich durch die rechnung bei mir funktioniert es 
+    // bei mir macht gar nichts einen Strich durch die rechnung bei mir funktioniert es
     char text[80];
     scanf("%s", text);
     printf("%s", text);
