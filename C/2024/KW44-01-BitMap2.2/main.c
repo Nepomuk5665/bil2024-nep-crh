@@ -31,8 +31,8 @@ typedef struct {
 #pragma pack(pop)
 
 int main() {
-    const int WIDTH = 30;
-    const int HEIGHT = 30;
+    const int WIDTH = 20;
+    const int HEIGHT = 20;
     const char* filename = "../red.bmp";
 
     // Berechne Padding
