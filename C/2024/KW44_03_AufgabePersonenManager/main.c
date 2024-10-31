@@ -87,9 +87,9 @@ void initFamily(struct Person p[]) {
         if (p[i].bestFriend == NULL) {
             printf("nd funktioniert bro!\n");
             exit(1);
-
         }
     }
+
 
     strcpy(p[0].name, "John Doe");
     strcpy(p[1].name, "Jane Doe");
