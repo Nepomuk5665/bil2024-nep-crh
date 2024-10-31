@@ -1,6 +1,4 @@
 #include <stdio.h>
-#include <ctype.h>
-
 
 void makeUppercase(char *str);
 
@@ -12,7 +10,8 @@ int main(void) {
     printf("%c%c", c1, c2); // prints A!
 }
 
-
 void makeUppercase(char *str) {
-    *str = toupper(*str);
+    if (*str >= 'a' && *str <= 'z') {
+        *str = *str - 32;
+    }
 }
