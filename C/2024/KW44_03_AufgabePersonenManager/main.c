@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include <stdlib.h>
+
 struct Person {
     char name[20 + 1];
     int birthyear;
@@ -10,6 +12,7 @@ struct Person {
         char name[30 + 1];
         char thema[20 + 1];
     } verein;
+    struct Person *bestFriend;
 };
 
 void initFamily(struct Person p[]);
@@ -18,7 +21,7 @@ void findOldestFamilyMember(struct Person p[]);
 void sortFamily(struct Person p[], int criteria);
 void swap(struct Person *p1, struct Person *p2);
 
-void main(void) {
+int main(void) {  // Changed from void main() to int main()
     struct Person p[4];
     int criteria = 0;
 
@@ -34,6 +37,8 @@ void main(void) {
     sortFamily(p, criteria);
     printFamily(p);
     findOldestFamilyMember(p);
+
+    return 0;
 }
 
 void printFamily(struct Person p[]) {
@@ -44,6 +49,9 @@ void printFamily(struct Person p[]) {
         printf("Height: %dcm, ", p[i].heightCM);
         printf("Verein: %s, ", p[i].verein.name);
         printf("Verein Thema: %s", p[i].verein.thema);
+        if (p[i].bestFriend != NULL) {
+            printf(", Best Friend: %s", p[i].bestFriend->name);
+        }
         printf("\n");
     }
 }
@@ -68,10 +76,30 @@ void findOldestFamilyMember(struct Person p[]) {
 }
 
 void initFamily(struct Person p[]) {
+    // alles zuerst zu NULL machen
+    for (int i = 0; i < 4; i++) {
+        p[i].bestFriend = NULL;
+    }
+
+    // machen dass es genug Speicher hat mit malloc
+    for (int i = 0; i < 4; i++) {
+        p[i].bestFriend = malloc(408); // 50 + 1 * 5 zum 50 character speichern
+        if (p[i].bestFriend == NULL) {
+            printf("nd funktioniert bro!\n");
+            exit(1);
+
+        }
+    }
+
     strcpy(p[0].name, "John Doe");
     strcpy(p[1].name, "Jane Doe");
     strcpy(p[2].name, "Jack Doe");
     strcpy(p[3].name, "Judy Doe");
+
+    strcpy(p[0].bestFriend->name, "NepoCute");
+    strcpy(p[1].bestFriend->name, "Michel");
+    strcpy(p[2].bestFriend->name, "Johantan");
+    strcpy(p[3].bestFriend->name, "2FA typ");
 
     strcpy(p[0].verein.name, "Verein Name 1");
     strcpy(p[1].verein.name, "Verein Name 2");
@@ -115,7 +143,6 @@ void sortFamily(struct Person p[], int criteria) {
                     break;
                 default:
                     break;
-
             }
         }
     }
