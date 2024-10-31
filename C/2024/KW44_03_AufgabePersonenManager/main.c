@@ -113,6 +113,9 @@ void sortFamily(struct Person p[], int criteria) {
                         swap(&p[i], &p[j]);
                     }
                     break;
+                default:
+                    break;
+
             }
         }
     }
