@@ -21,7 +21,7 @@ void findOldestFamilyMember(struct Person p[]);
 void sortFamily(struct Person p[], int criteria);
 void swap(struct Person *p1, struct Person *p2);
 
-int main(void) {  // Changed from void main() to int main()
+int main(void) {
     struct Person p[4];
     int criteria = 0;
 
@@ -87,9 +87,9 @@ void initFamily(struct Person p[]) {
         if (p[i].bestFriend == NULL) {
             printf("nd funktioniert bro!\n");
             exit(1);
+
         }
     }
-
 
     strcpy(p[0].name, "John Doe");
     strcpy(p[1].name, "Jane Doe");
