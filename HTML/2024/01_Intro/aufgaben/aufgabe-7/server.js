@@ -1,5 +1,5 @@
 // das wurde auf glitch.com gehostet und ist nur hier als dokumentation
-// auf glitch ist auch der API key gesetzt
+// auf glitch ist auch der API key gesetzt für openai
 
 const express = require('express');
 const https = require('https');
