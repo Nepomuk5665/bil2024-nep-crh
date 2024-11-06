@@ -1,44 +1,45 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-
-typedef struct Node {
-    int data;
-    struct Node *next;
-} CuteNode;
+#include "cute.h"
 
 int main() {
-    CuteNode head;
-    CuteNode *p_cursor = (CuteNode *)malloc(sizeof(CuteNode));
-    p_cursor = &head;
 
-    p_cursor->data = 33;
-    p_cursor->next = (CuteNode *)malloc(sizeof(CuteNode));
-
-    p_cursor = p_cursor->next;
-    p_cursor->data = 2;
-    p_cursor->next = (CuteNode *)malloc(sizeof(CuteNode));
-    p_cursor = p_cursor->next;
-    p_cursor->data = 42;
-    p_cursor->next = (CuteNode *)malloc(sizeof(CuteNode));
-    p_cursor = p_cursor->next;
-    p_cursor->data = 11;
-    p_cursor->next = (CuteNode *)malloc(sizeof(CuteNode));
-    p_cursor = p_cursor->next;
-    p_cursor->data = 0;
-
-    p_cursor = &head;
-
-    for (int i = 0; i < 5; i++) {
-        printf("%d\n", p_cursor->data);
-        p_cursor = p_cursor->next;
-    }
+    TNode* head = NULL;
 
 
+    appendNode(&head, 10);
+    appendNode(&head, 20);
+    appendNode(&head, 30);
 
-    free(p_cursor);
+    printf("Ursprüngliche Liste:\n");
+    printList(head);
 
-    p_cursor = NULL;
+
+    insertNodeAtIndex(&head, 1, 15);
+    printf("Nach Einfügen von 15 an Index 1:\n");
+    printList(head);
+
+
+    deleteNodeAtIndex(&head, 2);
+    printf("Nach Löschen des Nodes an Index 2:\n");
+    printList(head);
+
+
+    int value = getNodeValue(head, 1);
+    printf("Wert an Index 1: %d\n", value);
+
+
+    setAllNodes(head, 100);
+    printf("Nach Setzen aller Werte auf 100:\n");
+    printList(head);
+
+
+    printf("Listenlänge: %d\n", getListLength(head));
+
+
+    deleteList(&head);
+    printf("Nach Löschen der Liste:\n");
+    printList(head);
+
     return 0;
-
 }
