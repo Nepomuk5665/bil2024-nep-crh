@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-
 #include <stdlib.h>
 
 struct Person {
@@ -83,7 +82,7 @@ void initFamily(struct Person p[]) {
 
     // machen dass es genug Speicher hat mit malloc
     for (int i = 0; i < 4; i++) {
-        p[i].bestFriend = malloc(408); // 50 + 1 * 5 zum 50 character speichern
+        p[i].bestFriend = malloc(408); // 50 + 1 * 8 zum 50 character speichern
         if (p[i].bestFriend == NULL) {
             printf("nd funktioniert bro!\n");
             exit(1);
