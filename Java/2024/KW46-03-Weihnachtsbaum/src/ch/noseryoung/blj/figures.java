@@ -1,8 +1,12 @@
+package ch.noseryoung.blj;
+
+
 import java.util.Random;
 
-public class Main {
-    public static void main(String[] args) {
-        int height = 7;
+public class figures {
+
+    public void tree(int height) {
+
         Random random = new Random();
         String[] colors = {"\u001B[31m", "\u001B[32m", "\u001B[33m", "\u001B[34m", "\u001B[35m", "\u001B[36m"};
 
@@ -26,4 +30,8 @@ public class Main {
             System.out.println("***");
         }
     }
+
+
+
+
 }
