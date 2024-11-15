@@ -6,6 +6,9 @@ public class Person {
     private String characteristic;
     private int accessLevel;
 
+
+
+
     public String getName() {
         return name;
     }
@@ -21,6 +24,7 @@ public class Person {
             System.out.println("You are not allowed to chnage characteristic of " + this.name);
         }
     }
+
 
     public void setName(String name) {
         if (accessLevel == 1) {
