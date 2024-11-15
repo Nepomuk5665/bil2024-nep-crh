@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-        int pin = 0;
-        int length = 5;
+
+        int length = 4;
         int result = 1;
 
         for (int i = 0; i < length; i++) {
