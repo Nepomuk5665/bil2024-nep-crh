@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="67ec934f-39ab-46a1-80e7-ad5eafc0c08a" name="Changes" comment="">
+    <list default="true" id="67ec934f-39ab-46a1-80e7-ad5eafc0c08a" name="Changes" comment="Rucksack pack spiel programmiert">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,11 +68,24 @@
       <option name="presentableId" value="Default" />
       <updated>1732106873314</updated>
       <workItem from="1732106874382" duration="5000" />
-      <workItem from="1732106937263" duration="1121000" />
+      <workItem from="1732106937263" duration="4037000" />
     </task>
+    <task id="LOCAL-00001" summary="Rucksack pack spiel programmiert">
+      <option name="closed" value="true" />
+      <created>1732108330919</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1732108330919</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Rucksack pack spiel programmiert" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rucksack pack spiel programmiert" />
   </component>
 </project>
