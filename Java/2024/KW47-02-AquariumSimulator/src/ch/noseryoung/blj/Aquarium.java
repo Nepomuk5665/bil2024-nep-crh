@@ -7,11 +7,13 @@ public class Aquarium {
     private int[][] aquarium;
     private boolean isSaltwater;
     private ArrayList<Fish> fishes;
+    private int height;
 
     public Aquarium(int width, int height, boolean isSaltwater) {
         this.aquarium = new int[height][width];
         this.isSaltwater = isSaltwater;
         this.fishes = new ArrayList<>();
+        this.height = height;
 
         // setRandomFishes(height, width);
     }
@@ -37,7 +39,8 @@ public class Aquarium {
         System.out.println("▓");
         String aquariumAsString = Arrays.deepToString(aquarium);
         aquariumAsString = aquariumAsString.replace("[[", "▓").replace("], [", "▓\n▓").replace(", ", " ").replace("]]",
-                "▓").replace("0", "\uD83D\uDCA7").replace("1", "\uD83E\uDD88");
+                "▓").replace("0", "\uD83D\uDCA7").replace("1", "\uD83E\uDD88").replace("2",
+                "\uD83E\uDEB4").replace("3", "\uD83E\uDEA8");
         System.out.println(aquariumAsString);
 
         for (int i = 0; i < aquarium.length; i++) {
@@ -99,6 +102,14 @@ public class Aquarium {
         printAquarium();
         System.out.println(getFishesCount());
         System.out.println(isSaltwater ? "The water is salty" : "The water is not salty");
+    }
+
+    public void addPlant(int posX) {
+        aquarium[height-1][posX] = 2;
+    }
+
+    public void addStone(int posX) {
+        aquarium[height-1][posX] = 3;
     }
 
 }
