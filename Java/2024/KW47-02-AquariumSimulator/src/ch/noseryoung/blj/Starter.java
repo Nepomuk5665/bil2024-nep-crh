@@ -13,7 +13,7 @@ public class Starter {
 
         aquarium.changePosition(2, 2, 1, 1);
 
-        aquarium.addPlant(3);
+        aquarium.addPlant(5);
 
         aquarium.addStone(2);
 

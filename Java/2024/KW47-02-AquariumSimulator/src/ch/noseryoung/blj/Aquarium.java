@@ -112,4 +112,18 @@ public class Aquarium {
         aquarium[height-1][posX] = 3;
     }
 
+    public void changePositionPlant(int oldX, int newX) {
+        if (aquarium[height-1][oldX] == 2){
+            aquarium[height-1][oldX] = 0;
+            aquarium[height-1][newX] = 2;
+        }
+    }
+
+    public void changePositionStone(int oldX, int newX) {
+        if (aquarium[height-1][oldX] == 3){
+            aquarium[height-1][oldX] = 0;
+            aquarium[height-1][newX] = 3;
+        }
+    }
+
 }
