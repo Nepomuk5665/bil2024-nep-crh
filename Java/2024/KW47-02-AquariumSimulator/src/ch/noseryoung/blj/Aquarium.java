@@ -8,6 +8,7 @@ public class Aquarium {
     private boolean isSaltwater;
     private ArrayList<Fish> fishes;
     private int height;
+    private int maxFishes = 20;
 
     public Aquarium(int width, int height, boolean isSaltwater) {
         this.aquarium = new int[height][width];
@@ -16,6 +17,26 @@ public class Aquarium {
         this.height = height;
 
         // setRandomFishes(height, width);
+    }
+
+    public void fillAquarium(int liters) {
+
+
+        int waterRows = liters / (10 * aquarium[0].length);
+        int emptyRow = (liters % (10 * aquarium[0].length)) / 10;
+
+
+        for (int row = 0; row < aquarium.length; row++) {
+            for (int col = 0; col < aquarium[row].length; col++) {
+                if (row >= aquarium.length - waterRows) {
+                    aquarium[row][col] = (aquarium[row][col] == 0) ? 0 : aquarium[row][col];
+                } else if (row == aquarium.length - waterRows - 1 && col < emptyRow) {
+                    aquarium[row][col] = (aquarium[row][col] == 0) ? 0 : aquarium[row][col];
+                } else {
+                    aquarium[row][col] = 4;
+                }
+            }
+        }
     }
 
 
@@ -34,22 +55,22 @@ public class Aquarium {
 
     public void printAquarium() {
         for (int i = 0; i < aquarium.length; i++) {
-            System.out.print("▓▓");
+            System.out.print("▓▓▓▓▓▓");
         }
         System.out.println("▓");
         String aquariumAsString = Arrays.deepToString(aquarium);
         aquariumAsString = aquariumAsString.replace("[[", "▓").replace("], [", "▓\n▓").replace(", ", " ").replace("]]",
                 "▓").replace("0", "\uD83D\uDCA7").replace("1", "\uD83E\uDD88").replace("2",
-                "\uD83E\uDEB4").replace("3", "\uD83E\uDEA8");
+                "\uD83E\uDEB4").replace("3", "\uD83E\uDEA8").replace("4", "  ");
         System.out.println(aquariumAsString);
 
         for (int i = 0; i < aquarium.length; i++) {
-            System.out.print("▓▓");
+            System.out.print("▓▓▓▓▓▓");
         }
         System.out.println("▓");
     }
 
-    public void changePosition(int oldx, int oldy, int newx, int newy) {
+    public void changePositionFish(int oldx, int oldy, int newx, int newy) {
         boolean changed = false;
         for (int i = 0; i < fishes.size(); i++) {
             if (fishes.get(i).getPosX() == oldx && fishes.get(i).getPosY() == oldy) {
@@ -74,12 +95,17 @@ public class Aquarium {
     }
 
     public void addFish(int posX, int posY, String fishName) {
-        if(aquarium[posY][posX] == 0) {
-            fishes.add(new Fish(fishName, isSaltwater, posX, posY));
-            aquarium[posY][posX] = 1;
-        }else {
-            // wenn schon fisch da ist wird das ausgeführt
+        if (maxFishes >= fishes.size()) {
+            if(aquarium[posY][posX] == 0) {
+                fishes.add(new Fish(fishName, isSaltwater, posX, posY));
+                aquarium[posY][posX] = 1;
+            }else {
+                // wenn schon fisch da ist wird das ausgeführt
+            }
+        }else{
+            System.out.println("Max fishes reached");
         }
+
 
 
     }
@@ -116,6 +142,8 @@ public class Aquarium {
         if (aquarium[height-1][oldX] == 2){
             aquarium[height-1][oldX] = 0;
             aquarium[height-1][newX] = 2;
+        }else {
+            // if there is no plant
         }
     }
 
@@ -123,6 +151,8 @@ public class Aquarium {
         if (aquarium[height-1][oldX] == 3){
             aquarium[height-1][oldX] = 0;
             aquarium[height-1][newX] = 3;
+        }else {
+            // if there is no stone
         }
     }
 
