@@ -1,212 +1,272 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marmorcake Rezept</title>
+    <title>Marble Cake Recipe</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- pdf library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --bg-light: #f8f9fa;
+            --text-color: #333;
+            --card-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            line-height: 1.6;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-color);
             background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background-color: white !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .navbar-brand {
+            color: var(--primary-color) !important;
+            font-weight: bold;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
         }
 
         h1 {
-            color: #333;
+            font-size: 2.5rem;
             text-align: center;
-            margin-bottom: 20px;
-            padding: 20px 0;
-            border-bottom: 2px solid #ddd;
-        }
-
-        h2 {
-            color: #444;
-            margin: 25px 0;
-        }
-
-        h3 {
-            color: #555;
-            margin: 15px 0;
-        }
-
-        h4 {
-            color: #666;
-            margin: 10px 0;
-        }
-
-        a {
-            color: #0066cc;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        a:hover {
-            color: #003366;
-            text-decoration: underline;
-        }
-
-        p {
-            margin: 10px 0;
-        }
-
-        .cake-image {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 20px auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .ingredients {
-            background-color: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            margin: 20px 0;
-        }
-
-        .ingredients ul {
-            list-style-type: none;
-            padding-left: 20px;
-        }
-
-        .ingredients li {
-            margin: 8px 0;
-            padding-left: 20px;
             position: relative;
+            padding-bottom: 1rem;
         }
 
-        .ingredients li:before {
-            content: "•";
-            color: #666;
+        h1::after {
+            content: '';
             position: absolute;
-            left: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-color);
         }
 
-        .steps {
-            margin-top: 30px;
+        .card {
+            border: none;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+            margin-bottom: 1.5rem;
         }
 
-        .step {
-            background-color: white;
-            margin-bottom: 20px;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        .card:hover {
+            transform: translateY(-5px);
         }
 
         .calculator {
             background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            margin: 20px 0;
-            text-align: center;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            margin: 2rem 0;
         }
 
         .calculator input {
-            width: 80px;
-            padding: 8px;
-            margin: 0 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            max-width: 120px;
+            margin: 0 auto;
+            text-align: center;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            padding: 0.5rem;
         }
 
-        .calculator label {
+        .ingredients-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .ingredients-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .ingredients-list li:last-child {
+            border-bottom: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            padding: 0.75rem 1.5rem;
             font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #c0392b;
+            border-color: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        #impressum {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            margin-top: 3rem;
+        }
+
+        .recipe-steps {
+            margin: 2rem 0;
+        }
+
+        .view-images-btn {
+            display: inline-block;
+            margin: 1rem 0;
+            padding: 1rem 2rem;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .view-images-btn:hover {
+            background-color: #c0392b;
+            color: white;
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .calculator {
+                padding: 1rem;
+            }
+
+            .ingredients-card {
+                padding: 1rem;
+            }
+        }
+
+        
+        @media print {
+            .no-print {
+                display: none !important;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Bei dieser Webseite geht es um meinen gebachenen Marmorcake mit NepoCute!</h1>
-    <p>Ich habe das Rezept von <a href="https://www.swissmilk.ch/de/rezepte-kochideen/rezepte/SM2020_DIVE_27/marmorcake/" target="_blank">Swiss Milk</a>.</p>
-    
-    <img src="https://www.psassets.ch/thumbs/7e/fb/20fe3f353da1fb10c118821648d8-10290.jpg" alt="Marmorcake" class="cake-image">
-    
-    <div class="calculator">
-        <label for="pieces">Anzahl Stücke:</label>
-        <input type="number" id="pieces" value="12" min="1" onchange="updateIngredients()">
+    <nav class="navbar navbar-expand-lg navbar-light no-print">
+        <div class="container">
+            <a class="navbar-brand" href="#">Marble Cake Recipe</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#recipe">Recipe</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#steps">Steps</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#impressum">Impressum</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5" id="recipe-content">
+        <header>
+            <h1>Marble Cake with NepoCute</h1>
+            <p class="text-center">Recipe adapted from <a href="https://www.swissmilk.ch/de/rezepte-kochideen/rezepte/SM2020_DIVE_27/marmorcake/" target="_blank">Swiss Milk</a></p>
+        </header>
+
+        <section id="recipe" class="mt-5">
+            <div class="calculator text-center no-print">
+                <label for="pieces" class="form-label">Number of pieces:</label>
+                <input type="number" id="pieces" value="12" min="1" class="form-control mx-auto" onchange="updateIngredients()">
+            </div>
+
+            <div class="ingredients-card">
+                <h2>Ingredients</h2>
+                <p>Makes <span id="pieces-display">12</span> pieces</p>
+                <p>Baking paper</p>
+                
+                <ul class="ingredients-list list-unstyled">
+                    <li><span id="butter">150</span>g butter, soft</li>
+                    <li><span id="zucker">150</span>g sugar</li>
+                    <li>1 pinch of salt</li>
+                    <li><span id="eier">4</span> eggs, room temperature</li>
+                    <li><span id="mehl">280</span>g flour</li>
+                    <li><span id="backpulver">2</span> tsp baking powder</li>
+                    <li><span id="milch">1.25</span> dl milk</li>
+                </ul>
+                
+                <h4>Vanilla Dough:</h4>
+                <ul class="ingredients-list list-unstyled">
+                    <li><span id="vanille">1</span> tsp vanilla extract or powder</li>
+                </ul>
+                
+                <h4>Chocolate Dough:</h4>
+                <ul class="ingredients-list list-unstyled">
+                    <li><span id="kakao">3</span> tbsp cocoa powder</li>
+                    <li><span id="milch-schoko">4</span> tbsp milk</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="steps" class="recipe-steps">
+            <h2>Instructions</h2>
+            <div class="card">
+                <div class="card-body">
+                    <ol class="list-group list-group-flush">
+                        <li class="list-group-item">Mix butter until peaks form. Add sugar and salt. Gradually add eggs and stir until mixture is light. Mix flour with baking powder, stir in with milk. Divide dough between two bowls.</li>
+                        <li class="list-group-item">Preheat oven to 180°C top/bottom heat (convection 160°C).</li>
+                        <li class="list-group-item">Vanilla dough: Stir vanilla into one half of the dough.</li>
+                        <li class="list-group-item">Chocolate dough: Mix cocoa powder and milk into the other half of the dough.</li>
+                        <li class="list-group-item">Put vanilla dough into the paper-lined form, add chocolate dough on top, pull through spirally with a fork.</li>
+                        <li class="list-group-item">Bake on the lowest rack of the preheated oven for 45-55 minutes. Remove, let stand briefly in the form, remove from the form, let cool on a cake rack.</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4 no-print">
+                <a href="pics.html" class="view-images-btn">View Step-by-Step Images</a>
+            </div>
+        </section>
+
+        <section class="text-center mt-5 no-print">
+            <button onclick="generatePDF()" class="btn btn-primary">Download Recipe PDF</button>
+        </section>
+
+        <footer id="impressum">
+            <h2>Impressum</h2>
+            <p>Created by Nepomuk Crhonek</p>
+            <p>Contact: nepomuk@crhonek.com</p>
+            <p>© 2024 All rights reserved</p>
+        </footer>
     </div>
 
-    <h2>Hier ist das ganze Rezept:</h2>
-    
-    <div class="ingredients">
-        <h3>Zutaten:</h3>
-        <p><span id="pieces-display">12</span> Stück<br>
-        Backpapier</p>
-        
-        <ul>
-            <li><span id="butter">150</span> g Butter, weich</li>
-            <li><span id="zucker">150</span> g Zucker</li>
-            <li>1 Prise Salz</li>
-            <li><span id="eier">4</span> Eier, Raumtemperatur</li>
-            <li><span id="mehl">280</span> g Mehl</li>
-            <li><span id="backpulver">2</span> TL Backpulver</li>
-            <li><span id="milch">1.25</span> dl Milch</li>
-        </ul>
-        
-        <h4>Vanilleteig:</h4>
-        <ul>
-            <li><span id="vanille">1</span> TL Vanilleextrakt oder Vanillepulver</li>
-        </ul>
-        
-        <h4>Schokoladenteig:</h4>
-        <ul>
-            <li><span id="kakao">3</span> EL Kakaopulver</li>
-            <li><span id="milch-schoko">4</span> EL Milch</li>
-        </ul>
-    </div>
-    
-    <div class="steps">
-        <h3>Zubereitung:</h3>
-        <div class="step">
-            <h4>1.</h4>
-            <p>Butter rühren, bis sich Spitzchen bilden. Zucker und Salz dazurühren. Eier nach und nach beifügen und rühren, bis die Masse hell ist. Mehl mit Backpulver mischen, zusammen mit der Milch darunter rühren. Teig auf zwei Schüsseln aufteilen.</p>
-        </div>
-        
-        <div class="step">
-            <h4>2.</h4>
-            <p>Ofen auf 180°C Ober-/Unterhitze vorheizen (Heissluft/Umluft 160°C).</p>
-        </div>
-        
-        <div class="step">
-            <h4>3.</h4>
-            <p>Vanilleteig: Vanille unter die eine Teighälfte rühren.</p>
-        </div>
-        
-        <div class="step">
-            <h4>4.</h4>
-            <p>Schokoladenteig: Kakaopulver und Milch unter die andere Teighälfte rühren.</p>
-        </div>
-        
-        <div class="step">
-            <h4>5.</h4>
-            <p>Vanilleteig in die mit Backpapier ausgekleidete Form geben, Schokoladenteig darauf verteilen, mit einer Gabel spiralförmig unter den hellen Teig ziehen.</p>
-        </div>
-        
-        <div class="step">
-            <h4>6.</h4>
-            <p>Auf der untersten Rille des vorgeheizten Ofens 45-55 Minuten backen. Herausnehmen, kurz in der Form stehen lassen, aus der Form nehmen, auf einem Kuchengitter auskühlen lassen.</p>
-        </div>
-    </div>
-    
-    <p><a href="Bilder.html">Bilder</a></p>
-    <p><a href="cakerequest.html">Request cake</a></p>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function updateIngredients() {
             const pieces = document.getElementById('pieces').value;
             const ratio = pieces / 12;
-            
             
             document.getElementById('pieces-display').textContent = pieces;
             document.getElementById('butter').textContent = Math.round(150 * ratio);
@@ -218,6 +278,23 @@
             document.getElementById('vanille').textContent = Math.round(1 * ratio * 10) / 10;
             document.getElementById('kakao').textContent = Math.round(3 * ratio * 10) / 10;
             document.getElementById('milch-schoko').textContent = Math.round(4 * ratio * 10) / 10;
+        }
+
+        function generatePDF() {
+            
+            const content = document.getElementById('recipe-content');
+            
+            
+            const opt = {
+                margin: 1,
+                filename: 'marble-cake-recipe.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'cm', format: 'a4', orientation: 'portrait' }
+            };
+
+            
+            html2pdf().from(content).set(opt).save();
         }
     </script>
 </body>
