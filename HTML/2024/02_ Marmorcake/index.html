@@ -5,29 +5,125 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marmorcake Rezept</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
             line-height: 1.6;
+            background-color: #f5f5f5;
         }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 20px 0;
+            border-bottom: 2px solid #ddd;
+        }
+
+        h2 {
+            color: #444;
+            margin: 25px 0;
+        }
+
+        h3 {
+            color: #555;
+            margin: 15px 0;
+        }
+
+        h4 {
+            color: #666;
+            margin: 10px 0;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #003366;
+            text-decoration: underline;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
         .cake-image {
             max-width: 100%;
             height: auto;
             display: block;
             margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         .ingredients {
-            background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 5px;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            margin: 20px 0;
         }
+
+        .ingredients ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        .ingredients li {
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .ingredients li:before {
+            content: "•";
+            color: #666;
+            position: absolute;
+            left: 0;
+        }
+
         .steps {
-            margin-top: 20px;
+            margin-top: 30px;
         }
+
         .step {
-            margin-bottom: 15px;
+            background-color: white;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .calculator {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .calculator input {
+            width: 80px;
+            padding: 8px;
+            margin: 0 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .calculator label {
+            font-weight: bold;
         }
     </style>
 </head>
@@ -37,32 +133,37 @@
     
     <img src="https://www.psassets.ch/thumbs/7e/fb/20fe3f353da1fb10c118821648d8-10290.jpg" alt="Marmorcake" class="cake-image">
     
+    <div class="calculator">
+        <label for="pieces">Anzahl Stücke:</label>
+        <input type="number" id="pieces" value="12" min="1" onchange="updateIngredients()">
+    </div>
+
     <h2>Hier ist das ganze Rezept:</h2>
     
     <div class="ingredients">
         <h3>Zutaten:</h3>
-        <p>12 Stück<br>
+        <p><span id="pieces-display">12</span> Stück<br>
         Backpapier</p>
         
         <ul>
-            <li>150 g Butter, weich</li>
-            <li>150 g Zucker</li>
+            <li><span id="butter">150</span> g Butter, weich</li>
+            <li><span id="zucker">150</span> g Zucker</li>
             <li>1 Prise Salz</li>
-            <li>4 Eier, Raumtemperatur</li>
-            <li>280 g Mehl</li>
-            <li>2 TL Backpulver</li>
-            <li>1,25 dl Milch</li>
+            <li><span id="eier">4</span> Eier, Raumtemperatur</li>
+            <li><span id="mehl">280</span> g Mehl</li>
+            <li><span id="backpulver">2</span> TL Backpulver</li>
+            <li><span id="milch">1.25</span> dl Milch</li>
         </ul>
         
         <h4>Vanilleteig:</h4>
         <ul>
-            <li>1 TL Vanilleextrakt oder Vanillepulver</li>
+            <li><span id="vanille">1</span> TL Vanilleextrakt oder Vanillepulver</li>
         </ul>
         
         <h4>Schokoladenteig:</h4>
         <ul>
-            <li>3 EL Kakaopulver</li>
-            <li>4 EL Milch</li>
+            <li><span id="kakao">3</span> EL Kakaopulver</li>
+            <li><span id="milch-schoko">4</span> EL Milch</li>
         </ul>
     </div>
     
@@ -100,5 +201,24 @@
     </div>
     
     <p><a href="Bilder.html">Bilder</a></p>
+    <p><a href="cakerequest.html">Request cake</a></p>
+    <script>
+        function updateIngredients() {
+            const pieces = document.getElementById('pieces').value;
+            const ratio = pieces / 12;
+            
+            
+            document.getElementById('pieces-display').textContent = pieces;
+            document.getElementById('butter').textContent = Math.round(150 * ratio);
+            document.getElementById('zucker').textContent = Math.round(150 * ratio);
+            document.getElementById('eier').textContent = Math.round(4 * ratio);
+            document.getElementById('mehl').textContent = Math.round(280 * ratio);
+            document.getElementById('backpulver').textContent = Math.round(2 * ratio * 10) / 10;
+            document.getElementById('milch').textContent = Math.round(1.25 * ratio * 100) / 100;
+            document.getElementById('vanille').textContent = Math.round(1 * ratio * 10) / 10;
+            document.getElementById('kakao').textContent = Math.round(3 * ratio * 10) / 10;
+            document.getElementById('milch-schoko').textContent = Math.round(4 * ratio * 10) / 10;
+        }
+    </script>
 </body>
 </html>
