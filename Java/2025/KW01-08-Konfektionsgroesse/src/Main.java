@@ -16,7 +16,7 @@ public class Main {
         System.out.print("Brustumfang: ");
         int chestCircumference = scanner.nextInt();
 
-        
+
         computeGarmentSize(hight, chestCircumference, gender);
 
     }
