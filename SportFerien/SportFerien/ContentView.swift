@@ -8,12 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var username = ""
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            TextField("Username", text: $username)
+                .autocorrectionDisabled(true)
+                .padding()
+            Button(action:{
+                print("Continued as \(username)")
+            }, label: {
+                ZStack{
+                    Rectangle()
+                        .frame(width: 200, height: 50)
+                        .cornerRadius(20)
+                        
+                    Text("Continue")
+                        .foregroundStyle(.black)
+                    
+                }
+                
+                
+            })
         }
         .padding()
     }
