@@ -9,14 +9,25 @@ import SwiftUI
 
 struct ContentView: View {
     @AppStorage("username") var username = ""
+    @State private var showAlert = false
     var body: some View {
         
         VStack {
             TextField("Username", text: $username)
                 .autocorrectionDisabled(true)
                 .padding()
+                .onChange(of: username) {
+                    showAlert = false
+                }
+            if showAlert {
+                Text("🔝You need a username🔝")
+                    .foregroundStyle(.red)
+            }
             Button(action:{
                 print("Continued as \(username)")
+                if username.isEmpty {
+                    showAlert = true
+                }
             }, label: {
                 ZStack{
                     Rectangle()
