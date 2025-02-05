@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  SportFerien
+//  SportFreien
 //
 //  Created by Nepomuk Crhonek on 03.02.2025.
 //
@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var username = ""
+    @AppStorage("username") var username = ""
     var body: some View {
+        
         VStack {
             TextField("Username", text: $username)
                 .autocorrectionDisabled(true)
@@ -21,6 +22,7 @@ struct ContentView: View {
                     Rectangle()
                         .frame(width: 200, height: 50)
                         .cornerRadius(20)
+                        .foregroundStyle(.yellow)
                         
                     Text("Continue")
                         .foregroundStyle(.black)
@@ -29,6 +31,7 @@ struct ContentView: View {
                 
                 
             })
+            
         }
         .padding()
     }
