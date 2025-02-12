@@ -9,10 +9,8 @@ import Foundation
 import CryptoKit
 
 enum SimpleEncryption {
-    // Ein statischer String als Salt für mehr Konsistenz
     private static let salt = "SportFreienApp123"
     
-    // Statischer Schlüssel aus einem festen String
     static var key: SymmetricKey {
         let keyString = "SportFreienSecretKey123\(salt)"
         let keyData = keyString.data(using: .utf8)!
@@ -21,9 +19,20 @@ enum SimpleEncryption {
     
     static func encrypt(_ string: String) -> String? {
         do {
-            let data = string.data(using: .utf8)!
+            guard let data = string.data(using: .utf8) else {
+                print("Failed to convert string to data for encryption")
+                return nil
+            }
+            
             let encrypted = try AES.GCM.seal(data, using: key)
-            return encrypted.combined?.base64EncodedString()
+            guard let combined = encrypted.combined else {
+                print("Failed to get combined data after encryption")
+                return nil
+            }
+            
+            let result = combined.base64EncodedString()
+            print("Successfully encrypted message. Length: \(result.count)")
+            return result
         } catch {
             print("Encryption error: \(error)")
             return nil
@@ -32,10 +41,21 @@ enum SimpleEncryption {
     
     static func decrypt(_ string: String) -> String? {
         do {
-            guard let data = Data(base64Encoded: string) else { return nil }
+            guard let data = Data(base64Encoded: string) else {
+                print("Failed to decode base64 string for decryption")
+                return nil
+            }
+            
             let sealedBox = try AES.GCM.SealedBox(combined: data)
             let decryptedData = try AES.GCM.open(sealedBox, using: key)
-            return String(data: decryptedData, encoding: .utf8)
+            
+            guard let result = String(data: decryptedData, encoding: .utf8) else {
+                print("Failed to convert decrypted data to string")
+                return nil
+            }
+            
+            print("Successfully decrypted message. Result length: \(result.count)")
+            return result
         } catch {
             print("Decryption error: \(error)")
             return nil
