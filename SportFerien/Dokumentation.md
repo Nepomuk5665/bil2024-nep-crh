@@ -1,78 +1,99 @@
 # IPERKA Projektarbeit: iOS Messenger
 
 ## Informieren
-Ich habe mich über die wesentlichen Grundlagen informiert, die für den Bau einer iOS-Messenger-App mit SwiftUI, Firebase und einer AES-256-Bit-Verschlüsselung notwendig sind. Dabei habe ich mich intensiv mit SwiftUI (inkl. MVVM-Architektur), dem Firebase-Ökosystem (Echtzeit-Datenbank, Authentifizierung, Cloud Messaging) sowie der Implementierung und Verwaltung eines symmetrischen Verschlüsselungsverfahrens (AES 256) beschäftigt. Außerdem habe ich die grundlegende Chat-Logik definiert, damit Nutzer per Code einem Chat beitreten können.
+Ich habe mich über SwiftUI und Firebase informiert, um eine Chat-App zu bauen. Die App soll AES-256-Bit Verschlüsselung nutzen und einen einfachen Login mit Benutzername haben. Gruppen können über einen Code beigetreten werden. Die Nachrichten werden verschlüsselt gespeichert.
 
 ## Planen
-Ich habe meine Arbeit in zwei Wochen aufgeteilt. In der ersten Woche liegen zwei Ferientage sowie ein Schnuppertag, an dem ich nicht an dem Projekt arbeite. In der zweiten Woche ist ebenfalls ein Schnuppertag. Der genaue Zeitplan sieht folgendermaßen aus:
+Ich habe meine Arbeit in zwei Wochen aufgeteilt:
 
 ### Erste Woche
-- **Montag (Tag 1):** Projektstart, Grundlagen und Vorbereitung  
+- **Montag (Tag 1):** Projektstart, Grundlagen und Firebase Setup
 - **Dienstag (Tag 2):** Schnuppertag, keine Projektarbeit  
-- **Mittwoch (Tag 3):** Fortsetzung des Projekts  
+- **Mittwoch (Tag 3):** Code schreiben
 - **Donnerstag:** Ferien, keine Projektarbeit  
 - **Freitag:** Ferien, keine Projektarbeit  
 
 ### Zweite Woche
-- **Montag (Tag 4):** Projektarbeit  
-- **Dienstag (Tag 5):** Projektarbeit  
+- **Montag (Tag 4):** Chat-Funktion bauen
+- **Dienstag (Tag 5):** Verschlüsselung einbauen
 - **Mittwoch (Tag 6):** Schnuppertag, keine Projektarbeit  
-- **Donnerstag (Tag 7):** Projektarbeit  
-- **Freitag (Tag 8):** Projektabschluss und Tests
-
-Ich habe alle notwendigen Schritte festgelegt: von der Integration der Firebase-Services und AES-Verschlüsselung bis hin zu UI-Design und abschließenden Tests. Zudem habe ich mir Pufferzeiten eingeplant, um eventuelle Probleme beheben zu können.
+- **Donnerstag (Tag 7):** Tests und Fixes
+- **Freitag (Tag 8):** Fertigstellung
 
 ## Entscheiden
-Ich habe mich für SwiftUI als Framework entschieden, weil es moderne UI-Entwicklung für iOS ermöglicht und gut mit der MVVM-Architektur harmoniert. Firebase eignet sich als Backend, da es eine benutzerfreundliche Authentifizierung sowie eine Realtime-Datenbank bietet und sich mit Swift relativ einfach integrieren lässt. Für die sichere Übertragung und Speicherung der Chat-Nachrichten habe ich AES 256-Bit ausgewählt, da es ein bewährter und sicherer Standard für symmetrische Verschlüsselung ist. Der Chatbeitritt per Code ermöglicht eine einfache und gleichzeitig sichere Lösung für geschlossene Chat-Gruppen.
+- **Framework:** SwiftUI für die App
+- **Backend:** Firebase für die Datenbank
+- **Verschlüsselung:** AES-256 für sichere Nachrichten
+- **Login:** Einfacher Username-Login
+- **Gruppen:** Beitreten über Code-System
 
 ## Realisieren
-Ich habe die Umsetzung in die einzelnen Arbeitstage unterteilt, wobei die Tage, an denen ich nicht am Projekt arbeite, explizit ausgelassen werden:
 
 ### Tag 1 (Montag, Woche 1)
-- Vorbereitung der Dokumentationsstruktur (IPERKA)  
-- Erstellung eines neuen Xcode-Projekts  
-- Erste Konfiguration von SwiftUI-Views und Firebase (Projekt in der Firebase Console anlegen)  
+- Xcode-Projekt erstellt
+- Firebase eingerichtet
+- Grundstruktur der App gebaut
 
 ### Tag 2 (Dienstag, Woche 1)
-- Schnuppertag, keine Projektarbeit  
+- Schnuppertag, keine Projektarbeit
 
 ### Tag 3 (Mittwoch, Woche 1)
-- Grundlegende Firebase-Anbindung in Swift (Auth, Firestore oder Realtime DB)  
-- Planung der Verschlüsselungslogik (AES 256)  
-- Code-Architektur vorbereiten (MVVM in SwiftUI)
+- Username-Login programmiert
+- Firebase-Verbindung getestet
+- Erste Chat-Ansicht erstellt
 
 ### Donnerstag und Freitag (Woche 1)
 - Ferien, keine Projektarbeit
 
 ### Tag 4 (Montag, Woche 2)
-- Implementierung der Authentifizierung (Registrierung/Anmeldung) in der App  
-- Einrichtung des Chatbeitritts per Code (Generierung und Validierung)  
+- Chat-System gebaut
+- Gruppen-Beitritt über Code
+- Nachrichten senden und empfangen
 
 ### Tag 5 (Dienstag, Woche 2)
-- Integration der AES-256-Verschlüsselung:  
-  - Nachrichten bei Versand verschlüsseln  
-  - Empfangenene Nachrichten entschlüsseln  
-- Erstellung einer Schlüsselverwaltung (lokal und in Firebase)
+- AES-Verschlüsselung eingebaut
+- Nachrichten werden verschlüsselt gespeichert
+- Chat-Design verbessert
 
 ### Tag 6 (Mittwoch, Woche 2)
-- Schnuppertag, keine Projektarbeit  
+- Schnuppertag, keine Projektarbeit
 
 ### Tag 7 (Donnerstag, Woche 2)
-- Testen der Chatfunktionen mit echten Geräten bzw. Simulatoren  
-- Integration von Firebase Cloud Messaging (Push Notifications)  
-- Fehlerbehebung und Performance-Optimierung  
+- Bugs gefixt
+- Performance verbessert
+- Chat-Funktion getestet
 
 ### Tag 8 (Freitag, Woche 2)
-- Abschlussarbeiten und finale Tests  
-- Dokumentation vervollständigen (Erkenntnisse, Projektverlauf, Code-Struktur)  
-- Vorbereitung einer möglichen Präsentation und Lessons Learned  
+- Letzte Tests gemacht
+- Dokumentation geschrieben
+- Projekt fertiggestellt
 
 ## Kontrollieren
-Ich habe nach jedem Meilenstein getestet, ob die App wie geplant funktioniert. Authentifizierungen und Datenbankzugriffe habe ich durch Test-User geprüft. Die Verschlüsselung habe ich verifiziert, indem ich Nachrichten in Klartext abgefangen habe und sicherstellte, dass nur verschlüsselte Inhalte in der Datenbank landen. Auch die Einladungs-Codes habe ich in mehreren Szenarien getestet, um sicherzustellen, dass nur Nutzer mit gültigem Code dem Chat beitreten können.
+Die App wurde erfolgreich getestet:
+- Username-Login funktioniert
+- Gruppen können erstellt werden
+- Beitreten über Code klappt
+- Nachrichten werden verschlüsselt
+- Chat funktioniert in Echtzeit
 
 ## Analysieren
-### Selbstanalyse
-Ich habe meinen Zeitplan größtenteils einhalten können. Die Schnuppertage und Ferientage haben meine Arbeitszeit verkürzt, aber ich habe die fehlenden Stunden durch fokussierte Arbeit an den restlichen Tagen kompensieren können. Die Planung in IPERKA hat mir geholfen, den Überblick zu behalten und auf auftretende Probleme flexibel zu reagieren.
 
-### Sicherheitslücken
-Ich habe sichergestellt, dass die AES-Schlüssel sicher gespeichert und übertragen werden. Ich habe die Firebase-Regeln so eingerichtet, dass kein unbefugter Zugriff erfolgen kann. Ich habe den Authentifizierungsablauf nach gängigen Best Practices gestaltet und Passwortrichtlinien eingeführt. Den Chatbeitritts-Code habe ich mit ausreichend Komplexität versehen, damit Bruteforce-Angriffe erschwert werden.
+### Was gut funktioniert:
+- Username-Login ist einfach
+- Chat-System läuft stabil
+- Verschlüsselung schützt Nachrichten
+- Gruppen-Codes funktionieren
+
+### Verbesserungen für die Zukunft:
+- Eigener Salt für jeden User
+- Profilbilder hinzufügen
+- Offline-Modus
+- Push-Nachrichten
+- Dateien senden
+- Gruppen verlassen können
+- Nutzer aus Gruppe kicken
+- Dark Mode
+- Nachricht bearbeiten/löschen
+- Emojis und Reaktionen
+- Mehrere Chats gleichzeitig
+
