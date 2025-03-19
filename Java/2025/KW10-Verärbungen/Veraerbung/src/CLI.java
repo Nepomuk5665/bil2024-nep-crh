@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class CLI {
     private ArrayList<Medium> mediumArray = new ArrayList<>();
-    // besserer name
+
     public void cli() {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
