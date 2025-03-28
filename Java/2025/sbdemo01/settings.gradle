@@ -1,0 +1,13 @@
+rootProject.name = 'sbdemo01'
+
+// This is a simpler version that works with more Gradle versions
+gradle.beforeProject { project ->
+    project.plugins.withId('java') {
+        project.extensions.configure('java') {
+            it.toolchain {
+                languageVersion = JavaLanguageVersion.of(21)
+                vendor = JvmVendorSpec.ADOPTIUM
+            }
+        }
+    }
+}
