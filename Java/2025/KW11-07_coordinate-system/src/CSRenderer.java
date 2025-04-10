@@ -10,7 +10,6 @@ import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-
 public class CSRenderer extends JPanel {
 
   private CoordinateSystem cs;
@@ -22,7 +21,6 @@ public class CSRenderer extends JPanel {
 
   private final int OFFSET_MID;
   private final int OFFSET_END;
-
 
   public CSRenderer(CoordinateSystem cs, int fieldScale, int pointSize) {
     this.cs = cs;
@@ -54,6 +52,20 @@ public class CSRenderer extends JPanel {
   @Override
   public void paintComponent(Graphics g) {
     Graphics2D g2d = (Graphics2D) g;
+    
+    drawCoordinateSystemGrid(g2d);
+    
+    for (CSShape shape : cs.getAllShapes()) {
+      if (shape instanceof CSPoint) {
+        g2d.setStroke(new BasicStroke(pointSize));
+      } else {
+        g2d.setStroke(new BasicStroke(fieldScale));
+      }
+      shape.render(g2d, fieldScale, size);
+    }
+  }
+
+  private void drawCoordinateSystemGrid(Graphics2D g2d) {
     g2d.setStroke(new BasicStroke(fieldScale));
     for (int i = (fieldScale / 2); i <= OFFSET_END; i += (10 * fieldScale)) {
       g2d.setColor(Color.LIGHT_GRAY);
@@ -70,24 +82,7 @@ public class CSRenderer extends JPanel {
 
     g2d.setColor(Color.RED);
     g2d.drawLine(OFFSET_MID, OFFSET_MID, OFFSET_MID, OFFSET_MID);
-
-    g2d.setStroke(new BasicStroke(pointSize));
-    for (CSPoint point : cs.getAllPoints()) {
-      CSPoint translatedPoint = translatePoint(point);
-      g2d.setColor(Color.BLUE);
-      g2d.drawLine(translatedPoint.x, translatedPoint.y, translatedPoint.x, translatedPoint.y);
-    }
-    
-    g2d.setStroke(new BasicStroke(fieldScale));
-    for (CSLineSegment lineSegment : cs.getAllLineSegments()) {
-      CSPoint translatedStartPoint = translatePoint(lineSegment.getStartPoint());
-      CSPoint translatedEndPoint = translatePoint(lineSegment.getEndPoint());
-      g2d.setColor(Color.GREEN);
-      g2d.drawLine(translatedStartPoint.x, translatedStartPoint.y, 
-                  translatedEndPoint.x, translatedEndPoint.y);
-    }
   }
-
 
   private CSPoint translatePoint(Point point) {
     return new CSPoint(point.x * fieldScale + size / 2, size / 2 - point.y * fieldScale);
@@ -98,50 +93,21 @@ public class CSRenderer extends JPanel {
     this.addMouseMotionListener(new MouseAdapter() {
       @Override
       public void mouseMoved(MouseEvent me) {
-        boolean pointFound = false;
-        for (CSPoint point : cs.getAllPoints()) {
-          CSPoint tp = translatePoint(point);
-
-          if ((me.getPoint().x >= tp.x - scaledLeeway && me.getPoint().x <= tp.x + scaledLeeway)
-              && (me.getPoint().y >= tp.y - scaledLeeway && me.getPoint().y <= tp.y + scaledLeeway)) {
-            mainFrame.setTitle(point.toString());
-            pointFound = true;
-            break;
+        for (CSShape shape : cs.getAllShapes()) {
+          Point screenPoint = me.getPoint();
+          Point worldPoint = new Point(
+              (screenPoint.x - size / 2) / fieldScale,
+              (size / 2 - screenPoint.y) / fieldScale
+          );
+          
+          if (shape.containsPoint(worldPoint, scaledLeeway)) {
+            mainFrame.setTitle(shape.toString());
+            return;
           }
         }
         
-        if (!pointFound) {
-          for (CSLineSegment lineSegment : cs.getAllLineSegments()) {
-            CSPoint tpStart = translatePoint(lineSegment.getStartPoint());
-            CSPoint tpEnd = translatePoint(lineSegment.getEndPoint());
-            
-            if (isPointNearLine(me.getPoint(), tpStart, tpEnd, scaledLeeway)) {
-              mainFrame.setTitle(lineSegment.toString());
-              break;
-            }
-          }
-        }
+        mainFrame.setTitle("");
       }
     });
-  }
-  
-
-  private boolean isPointNearLine(Point point, Point lineStart, Point lineEnd, int tolerance) {
-    double lineLength = lineStart.distance(lineEnd);
-    if (lineLength == 0) return false;
-    
-    double distance = Math.abs((lineEnd.y - lineStart.y) * point.x - 
-                             (lineEnd.x - lineStart.x) * point.y + 
-                             lineEnd.x * lineStart.y - 
-                             lineEnd.y * lineStart.x) / lineLength;
-    
-    if (distance <= tolerance) {
-      double dotProduct = ((point.x - lineStart.x) * (lineEnd.x - lineStart.x) + 
-                         (point.y - lineStart.y) * (lineEnd.y - lineStart.y)) / (lineLength * lineLength);
-      
-      return dotProduct >= 0 && dotProduct <= 1;
-    }
-    
-    return false;
   }
 }
