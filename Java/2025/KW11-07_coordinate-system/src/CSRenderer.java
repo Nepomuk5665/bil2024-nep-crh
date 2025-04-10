@@ -10,9 +10,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-/**
- * Diese Klasse ist für die Visualisierung eines Koordinatensystems zuständig.
- */
+
 public class CSRenderer extends JPanel {
 
   private CoordinateSystem cs;
@@ -25,9 +23,7 @@ public class CSRenderer extends JPanel {
   private final int OFFSET_MID;
   private final int OFFSET_END;
 
-  /**
-   * Konstruktor für das Fenster, in dem das Koordinatensystem gezeichnet wird.
-   */
+
   public CSRenderer(CoordinateSystem cs, int fieldScale, int pointSize) {
     this.cs = cs;
     this.size = cs.getCoordinateSystemSize() * fieldScale;
@@ -92,9 +88,7 @@ public class CSRenderer extends JPanel {
     }
   }
 
-  /**
-   * Konvertiert einen Punkt in ein kartesisches Koordinatensystem.
-   */
+
   private CSPoint translatePoint(Point point) {
     return new CSPoint(point.x * fieldScale + size / 2, size / 2 - point.y * fieldScale);
   }
@@ -131,9 +125,7 @@ public class CSRenderer extends JPanel {
     });
   }
   
-  /**
-   * Prüft, ob ein Punkt nahe einer Linie liegt.
-   */
+
   private boolean isPointNearLine(Point point, Point lineStart, Point lineEnd, int tolerance) {
     double lineLength = lineStart.distance(lineEnd);
     if (lineLength == 0) return false;

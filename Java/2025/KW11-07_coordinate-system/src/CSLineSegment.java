@@ -1,6 +1,4 @@
-/**
- * Repräsentiert ein Liniensegment im 2D-Koordinatensystem, definiert durch zwei Punkte.
- */
+
 public class CSLineSegment {
     private static int nextId = 1;
     private final int id;

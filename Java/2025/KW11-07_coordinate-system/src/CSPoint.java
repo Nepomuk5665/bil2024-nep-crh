@@ -1,9 +1,6 @@
 import java.awt.Point;
 
-/**
- * Repräsentiert einen Punkt im 2D-Koordinatensystem.
- * Erweitert java.awt.Point und fügt eine eindeutige ID hinzu.
- */
+
 public class CSPoint extends Point {
     private static int nextId = 1;
     private final int id;
