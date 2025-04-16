@@ -1,0 +1,29 @@
+Aktueller Fahrzeugbestand (Stand 11.04.2025):
+
+Wohnmobil:
+	. Hymermobil
+	. VW California
+	
+Kleinwagen:
+	. Opel corsa
+	. Fiat 500
+	. Hyundai I10
+	. Suzuki Swift
+	
+Luxuswagen:
+	. Mercedes S-Klasse
+	. BMW4 Z4 cabriolet
+	. Mazda MX5 cabriolet
+	. BMW 18
+	
+Lastwagen:
+	. Mercedes Vita
+	. VW Crafter
+	. Iveco daily
+	. Opel Cicoro E
+	. VW e-Crafter	
+	
+Anhänger:
+	. Böckmann Hochlader (für Heissluftballon)
+	. Böckmann Bootsanhänger (für Boot)
+	. Böckmann Tieflader (für Velos)
