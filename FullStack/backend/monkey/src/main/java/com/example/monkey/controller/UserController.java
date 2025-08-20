@@ -56,6 +56,42 @@ public class UserController {
                 .orElse(ResponseEntity.notFound().build());
     }
     
+    @PutMapping("/{username}")
+    public ResponseEntity<User> updateUser(@PathVariable String username, @RequestBody User userDetails) {
+        return userRepository.findByUsername(username)
+                .map(user -> {
+                    if (userDetails.getPoints() != null) {
+                        user.setPoints(userDetails.getPoints());
+                    }
+                    if (userDetails.getLevel() != null) {
+                        user.setLevel(userDetails.getLevel());
+                    }
+                    return ResponseEntity.ok(userRepository.save(user));
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
+    
+    @PutMapping("/{username}/level")
+    public ResponseEntity<User> updateUserLevel(@PathVariable String username, @RequestParam Integer level) {
+        return userRepository.findByUsername(username)
+                .map(user -> {
+                    user.setLevel(level);
+                    return ResponseEntity.ok(userRepository.save(user));
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
+    
+    @PutMapping("/{username}/update")
+    public ResponseEntity<User> updateUserPointsAndLevel(@PathVariable String username, @RequestParam Integer points, @RequestParam Integer level) {
+        return userRepository.findByUsername(username)
+                .map(user -> {
+                    user.setPoints(points);
+                    user.setLevel(level);
+                    return ResponseEntity.ok(userRepository.save(user));
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
+    
     @DeleteMapping("/{username}")
     public ResponseEntity<?> deleteUser(@PathVariable String username) {
         return userRepository.findByUsername(username)

@@ -17,4 +17,7 @@ public class User {
     
     @Column(nullable = false)
     private Integer points = 0;
+    
+    @Column(nullable = false)
+    private Integer level = 1;
 }
