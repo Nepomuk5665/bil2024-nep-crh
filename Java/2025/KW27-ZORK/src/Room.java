@@ -62,6 +62,8 @@ public class Room {
             for (Item item : items) {
                 System.out.println("- " + item.name);
             }
+        } else {
+            System.out.println("Dieser Raum ist leer.");
         }
         
         if (!doors.isEmpty()) {

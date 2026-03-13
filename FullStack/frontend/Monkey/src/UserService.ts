@@ -44,6 +44,7 @@ function addPoints(username: string, points: number) {
 }
 
 function addLevel(username: string, points: number, level: number) {
+    console.log(`${baseURL}/${username}`, { points, level })
     return axios.put(`${baseURL}/${username}`, { points, level })
         .then(response => {
             console.log('Level updated:', response.data);

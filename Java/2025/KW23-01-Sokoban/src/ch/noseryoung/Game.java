@@ -47,7 +47,7 @@ public class Game {
     System.out.println("UP");
     move(0);
   }
-  // 0 = up, 1 = down, 2 = left, 3 = Down
+  // 0 = up, 1 = Right, 2 = left, 3 = Down
   private void move(int choice){
     Point playerPosition = findPlayer();
     int x = playerPosition.x;

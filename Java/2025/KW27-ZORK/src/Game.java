@@ -116,7 +116,7 @@ public class Game {
     private void handleTake(String input) {
         boolean found = false;
         for (Item item : currentRoom.getItems()) {
-            if (input.contains(item.name.toLowerCase())) {
+            if (input.trim().endsWith(item.name.toLowerCase())) {
                 itemInHand = item.name;
                 System.out.println("Du hast jetzt " + itemInHand + " in der Hand");
                 found = true;
